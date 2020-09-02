@@ -1,0 +1,44 @@
+type User {
+  id: ID! @id
+  email: String
+  password: String
+  isAdmin: Boolean
+  createdAt: DateTime! @createdAt
+}
+
+type Hotel {
+  id: ID! @id
+  name: String!
+  locality: String
+  cuisine: String
+  url: [String] @scalarList(strategy: RELATION)
+  food: [Food] @relation(name: "HotelHaveFood" onDelete: CASCADE )
+  createdAt: DateTime! @createdAt
+}
+
+type Food {
+  id: ID! @id
+  hotel: Hotel @relation(name: "FoodHasHotel")
+  name: String!
+  price: Float
+  url:[String] @scalarList(strategy: RELATION)
+  createdAt: DateTime! @createdAt
+}
+
+type Cart {
+  id: ID! @id
+  user: User @relation(name: "CartHasUser")
+  food: Food @relation(name: "CartHasFood")
+  quantity: Int
+  createdAt: DateTime! @createdAt
+}
+
+type Order {
+  id: ID! @id
+  user: User @relation(name: "OrderHasUser")
+  food: [Food] @relation(name: "OrderHasFood")
+  total: Float
+  payment: String
+  createdAt: DateTime! @createdAt
+}
+

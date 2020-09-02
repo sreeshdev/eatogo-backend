@@ -1,0 +1,19 @@
+node_modules/
+dev.log
+config.json
+db.config.json
+.idea/
+package-lock.json
+yarn-error.log
+/generated
+build
+.import
+backup
+uploads
+profile
+.DS_Store
+.env
+.env.*
+/src/prisma/schema.graphql
+/generated/prisma-client/
+# /services/elasticsearch
